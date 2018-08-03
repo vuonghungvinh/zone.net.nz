@@ -1,0 +1,300 @@
+{% load animal3_thumbnail %}
+
+{% comment %}
+<ul class="nav" style="display: none;">
+{% for category in categories %}
+    <li class="submenu">
+        <span class="show-menu">
+            <a href="{% url 'catalogue-category-detail' category.slug category.pk %}" class="category-nav-image">
+
+                {% if category.logo %}
+                    {% if category.id == 2 %}
+                        <img src="{{MEDIA_URL}}/{{category.logo}}" class="logo">
+                    {% else %}
+                        {% thumbnail category.logo 'product-nav-logo' class='logo' %}
+                    {% endif %}
+                {% endif %}
+            </a>
+            <h3><a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a></h3>
+            {% if category.sub_categories %}
+                <ul class="sub-category" style="display: block !important;">
+                {% for sub_category in category.sub_categories.all %}
+                    <li>
+                    <a href="{% url 'catalogue-sub-category-detail' category.slug sub_category.slug sub_category.pk %}">{{ sub_category.name }}</a>
+                    </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </span>
+        <span class="hidden-menu">
+            <h3>
+                <a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a>
+            </h3>
+        </span>
+    </li>
+{% empty %}
+    <li><em>No Categories.</em></li>
+{% endfor %}
+    <li class="help show-menu"><h2>Need Product or Specification Support? Call us on 0800 508 800</h2></li>
+</ul>
+{% endcomment %}
+
+<ul class="nav" style="display: none;">
+    <li class="submenu">
+        <!-- bobrick -->
+        <span class="show-menu menu-first-item bobrick">
+            <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/1/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/Bobrick-logo.png' %}" class="logo" alt="Bobrick Stainless Steel Bathroom Accessories">
+            </a>
+            <h3><a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/1/">Bobrick Stainless Steel</br>Bathroom Accessories</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/grab-bars/10/">Grab Bars</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/hand-dryers/11/">Hand Dryers</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/hooks-towel-holders/9/">Hooks/Shelves/Custodial</br>Accessories</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/mirrors/12/">Mirrors</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/paper-towel-dispensers/2/">Paper Towel Dispensers</a>
+                        <a href="/category/bobrick-stainless-steel-bathroom-accessories/roll-towel-dispensers/5/">Roll Towel Dispensers</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/sanitary-disposal-units/7/">Sanitary Disposal Units</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/seat-cover-dispensers/3/">Seat Cover Dispensers</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/soap-dispensers/1/">Soap Dispensers</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/toilet-roll-holder/6/">Toilet Roll Holders</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/waste-receptacles/4/">Waste Receptacles</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/showertubaccessories/13/">Shower/Tub Accessories</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/healthcare/34/">Healthcare</a>
+                        <a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/miscellaneous/35/">Miscellaneous</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/bobrick-stainless-steel-bathroom-accessories/1/">Bobrick Stainless Steel Bathroom Accessories</a></h3>
+        </span>
+        <!-- end bobrick -->
+
+        <!-- koala -->
+        <!--span class="show-menu koala">
+            <a href="/catalogue/category/koala-baby-change-stations/2/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/koala-logo.png' %}" class="logo" alt="Koala Kare Baby Change Stations">
+            </a>
+            <h3><a href="/catalogue/category/koala-baby-change-stations/2/">Koala Kare Baby</br>Change Stations</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/koala-baby-change-stations/baby-changing-stations/29/">Baby Changing Stations</a>
+                        <a href="/catalogue/category/koala-baby-change-stations/seating/30/">Seating</a>
+                        <a href="/catalogue/category/koala-baby-change-stations/parts-and-accessories/31/">Parts and Accessories</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/koala-baby-change-stations/2/">Koala Kare Baby Change Stations</a></h3>
+        </span-->
+        <!-- end koala -->
+    </li>
+
+    <li class="submenu">
+        <!-- stern -->
+        <!--span class="show-menu menu-first-item stern">
+            <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/9/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/Stern-logo.png' %}" class="logo" alt="Stern Automated Faucets & Soap Dispensers">
+            </a>
+            <h3><a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/9/">Stern Automated Faucets<br>& Soap Dispensers</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/lavatory-faucets/32/">Lavatory Faucets</a>
+                        <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/wall-mounted-faucets/33/">Wall Mounted Faucets</a>
+                        <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/lavatory-soap-dispensers/36/">Lavatory Soap Dispensers</a>
+                        <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/wall-mounted-soap-dispenser/37/">Wall Mounted Soap Dispenser</a>
+                        <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/behind-mirror/39/">Behind The Mirror</a>
+                        <a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/multi-feed-kits/40/">Multi-feed Kits</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/stern-automated-faucets-and-soap-dispensers/9/">Stern Automated Faucets & Soap Dispensers</a></h3>
+        </span-->
+        <!-- end stern -->
+	<!-- koala -->
+        <span class="show-menu koala">
+            <a href="/catalogue/category/koala-baby-change-stations/2/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/koala-logo.png' %}" class="logo" alt="Koala Kare Baby Change Stations">
+            </a>
+            <h3><a href="/catalogue/category/koala-baby-change-stations/2/">Koala Kare Baby</br>Change Stations</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/koala-baby-change-stations/baby-changing-stations/29/">Baby Changing Stations</a>
+                        <a href="/catalogue/category/koala-baby-change-stations/seating/30/">Seating</a>
+                        <a href="/catalogue/category/koala-baby-change-stations/parts-and-accessories/31/">Parts and Accessories</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/koala-baby-change-stations/2/">Koala Kare Baby Change Stations</a></h3>
+        </span>
+        <!-- end koala -->
+
+        <!-- tepromark -->
+        <span class="show-menu tepromark">
+            <a href="/catalogue/category/tepromark-wall-protection-systems/3/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/tepromark-logo.png' %}" class="logo" alt="Tepromark Wall Protection Systems">
+            </a>
+            <h3><a href="/catalogue/category/tepromark-wall-protection-systems/3/">Tepromark Wall<br>Protection Systems</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/tepromark-wall-protection-systems/handrails-crash-rails/18/">Handrails / Crash Rails</a>
+                        <a href="/catalogue/category/tepromark-wall-protection-systems/bed-bumpers/19/">Bed Bumpers</a>
+                        <a href="/catalogue/category/tepromark-wall-protection-systems/high-impact-corner-guards/20/">High Impact Corner Guards</a>
+                        <a href="/catalogue/category/tepromark-wall-protection-systems/rigid-wall-protection-sheets/21/">Rigid Wall Protection Sheets</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/tepromark-wall-protection-systems/3/">Tepromark Wall Protection Systems</a></h3>
+        </span>
+        <!-- end tepromark -->
+    </li>
+    
+    <li class="submenu">
+        <!-- balco -->
+        <span class="show-menu menu-first-item balco">
+            <a href="/catalogue/category/balco-expansion-seismic-joints/4/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/Balco-logo.png' %}" class="logo" alt="Balco Expansion & Seismic Joints">
+            </a>
+            <h3><a href="/catalogue/category/balco-expansion-seismic-joints/4/">Balco Expansion<br>& Seismic Joints</a></h3>
+                
+               <!--
+                   <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/balco-expansion-seismic-joints/floor-covers/23/">Floor Covers</a>
+                        <a href="/catalogue/category/balco-expansion-seismic-joints/fire-barriers/24/">Fire Barriers</a>
+                        <a href="/catalogue/category/balco-expansion-seismic-joints/wall-and-ceiling/25/">Wall & Ceiling</a>
+                        <a href="/catalogue/category/balco-expansion-seismic-joints/exterior-wall-and-roof-joint-cover-systems/26/">Exterior Wall & Roof Joint<br>Cover Systems</a>
+                        <a href="/catalogue/category/balco-expansion-seismic-joints/parking-garages-and-open-air-systems/27/">Parking Garages & Open<br>Air Systems</a>
+                        <a href="/catalogue/category/balco-expansion-seismic-joints/michael-rizza-premium-silicone-systems/28/">Michael Rizza Premium<br>Silicone Systems</a>
+                    </li>
+                </ul>
+                   //--> 
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/balco-expansion-seismic-joints/4/">Balco Expansion & Seismic Joints</a></h3>
+        </span>
+        <!-- end balco -->
+        
+       
+        
+        
+        <!-- united enertech -->
+        <span class="show-menu menu-first-item balco">
+            <a href="/catalogue/category/united-enertech/11/" class="category-nav-image">
+                <img src="{% static 'brand-logos/united-entertech-logo.png' %}" class="logo" alt="United Enertech Architectural Louvers, Grills, Sun and Machine Screens">
+            </a>
+            <h3><a href="/catalogue/category/united-enertech/11/">United Enertech</a></h3>
+                
+              
+                   <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/category/united-enertech/11/">Architectural Louvers</a>
+                        <a href="/catalogue/category/united-enertech/11/">Grills</a>
+                        <a href="/catalogue/category/united-enertech/11/">Sun & Machine Screens</a>
+               
+                    </li>
+                </ul>
+                   
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/united-enertech/11/">United Enertech Architectural Louvers Etc</a></h3>
+        </span>
+        <!-- end united enertech -->
+        
+        
+        
+        
+        
+
+        <!-- zolatone -->
+        <span class="show-menu zolatone">
+            <a href="/catalogue/category/zolatone-multicolour-coating/5/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/zolatone-logo.png' %}" class="logo" alt="Zolatone Multicolour Interior Wall Finish">
+            </a>
+            
+            
+            <h3><a href="/catalogue/category/zolatone-multicolour-coating/5/">Zolatone Multicolour<br>Interior Wall Finish</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/product/flex-roll/22/">Flex Rolled Multi Colour</a>
+                        <a href="/catalogue/product/counterpointe/23/">Counterpointe</a>
+                        <a href="/catalogue/product/lluminations/26/">Lluminations</a>
+                        <a href="/catalogue/product/metals/27/">Metals</a>
+                        <a href="/catalogue/product/polomyx/28/">Polomyx</a>
+                        <a href="/catalogue/product/polomyx-airless/29/">Polomyx Airless</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/zolatone-multicolour-coating/5/">Zolatone Multicolour Interior Wall Finish</a></h3>
+        </span>
+        <!-- end zolatone -->
+    </li>
+
+    <li class="submenu">
+        <!-- firezone -->
+        <span class="show-menu menu-first-item firezone">
+            <a href="/catalogue/category/firezone-intumescent-coatings/7/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/firezone-logo.png' %}" class="logo" alt="FireZone Intumescent Coatings">
+            </a>
+            <h3><a href="/catalogue/category/firezone-intumescent-coatings/7/">FireZone Intumescent<br>Coatings </a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/product/FireZone-92-Clear-Intumescent-Coating-for-Timber/21/">FireZone 92 -<br>Clear Intumescent<br>Coating for Timber</a>
+                        <a href="/catalogue/product/firezone-52-white-fire-resistant-coating/245/">FireZone 52 -<br>White Intumescent<br>Coating</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/firezone-intumescent-coatings/7/">FireZone Intumescent Coatings </a></h3>
+        </span>
+        <!-- end firezone -->
+
+        <!-- phoenix -->
+        <span class="show-menu phoenix">
+            <a href="/catalogue/category/phoenix-intumescent-coating-steel/6/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/phoenix-logo.png' %}" class="logo" alt="Phoenix Intumescent Coating for Steel">
+            </a>
+            <h3><a href="/catalogue/category/phoenix-intumescent-coating-steel/6/">Phoenix Intumescent<br>Coating for Steel</a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                         <a href="/catalogue/product/phoenix-370-60/500/">Phoenix 370-60</a>
+                        <a href="/catalogue/product/phoenix-370-90/562/">Phoenix 370-90</a>
+                             <a href="/catalogue/product/phoenix-370-120/17/">Phoenix 370-120</a>
+                        <a href="/catalogue/product/phoenix-170-120/18/">Phoenix 170-120</a>
+                   
+                       
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/phoenix-intumescent-coating-steel/6/">Phoenix Intumescent Coating for Steel</a></h3>
+        </span>
+        <!-- end phoenix -->
+
+        <!-- Isolatek -->
+        <span class="show-menu isolatek">
+            <a href="/catalogue/category/isolatek-spray-applied-fireproofing-material/10/" class="category-nav-image">
+                <img src="{% static 'brand-logos/new/Isolatek-logo.png' %}" class="logo" alt="Isolatek Spray Applied Fireproofing Material">
+            </a>
+            <h3><a href="/catalogue/category/isolatek-spray-applied-fireproofing-material/10/">Isolatek Spray Applied<br>Fireproofing Material </a></h3>
+                <ul class="sub-category" style="display: block !important;">
+                    <li>
+                        <a href="/catalogue/product/isolatek-type-300/530/">Isolatek Type 300</a>
+                        <a href="/catalogue/product/isolatek-qwik-set/532/">Isolatek Qwik Set</a>
+                        <a href="/catalogue/product/isolatek-type-300-es/531/">Isolatek Type ES</a>
+                    </li>
+                </ul>
+        </span>
+        <span class="hidden-menu">
+            <h3><a href="/catalogue/category/isolatek-spray-applied-fireproofing-material/10/">Isolatek Spray Applied Fireproofing Material </a></h3>
+        </span>
+        <!-- end Isolatek -->
+    </li>
+
+    <li class="clearfix"></li>
+</ul>

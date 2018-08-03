@@ -1,0 +1,22 @@
+{% extends "admin/base.html" %}
+{% load i18n admin_reorder_tag %}
+
+
+
+{% block extrastyle %}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'common/admin.css' %}" type="text/css" />
+{% endblock %}
+
+
+
+{% block title %}{{ title }} | {{ META_NAME }} {% trans "Administration" %}{% endblock %}
+
+
+{% block branding %}
+{% admin_reorder %}
+<h1 id="site-name">{{ META_NAME }} {% trans "Administration" %}</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+

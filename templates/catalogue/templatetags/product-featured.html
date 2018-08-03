@@ -1,0 +1,14 @@
+{% load animal3_thumbnail %}
+
+
+<a href="{{ product.get_absolute_url }}">
+{% if product.cover_image %}
+    {% thumbnail product.cover_image 'product-thumbnail' %}
+{% endif %}
+<h4>{{ product.name }}</h4>
+<div class="product-featured-description">
+{{ product.description|safe|truncatewords:25 }}
+</div>
+</a>
+
+

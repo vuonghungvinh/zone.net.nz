@@ -1,0 +1,287 @@
+
+// main nav
+
+nav#main-nav {
+    margin-top: 22px;
+    padding: 0;
+    background: #f6f7f7;
+    border-top: 1px solid #444f51;
+    border-bottom: 1px solid #444f51;
+    position: relative;
+
+    ul {
+        margin: 0;
+        position: relative;
+
+        // Inner div that contains close button and ul
+
+        div {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            z-index: 99998;
+            overflow: hidden;
+            background: rgba(250,250,250,1);
+            box-shadow: 0 0 5px rgba(0,0,0,0.35);
+
+            ul.sub-category {
+                z-index: 99999;
+            }
+
+        }
+
+
+    }
+
+    // list items
+
+    li {
+        list-style: none;
+        float: left;
+        margin: 0 25px 0 0;
+
+        // no margin on first li
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &#hidden-link {
+            display: none;
+        }
+
+
+        // search li
+
+        &.search {
+            float: right;
+            padding: 5px 10px;
+            margin: 16px 0 0 0;
+        }
+
+        // anchors
+
+        a {
+            display: block;
+            text-decoration: none;
+            padding: 20px 0 15px 0;
+            color: #000;
+            border-bottom: 5px solid transparent;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 0.015em;
+
+            &:hover,
+            &.selected {
+                border-bottom: 5px solid #d81e05;
+            }
+        }
+
+        // on hover, show nested ul
+
+        &:hover ul.subnav {
+            display: block;
+
+        }
+
+        // nested list items
+
+        li {
+            margin: 5px 0;
+            float: none;
+
+            a {
+                display: block;
+                text-decoration: none;
+                padding: 0px 15px;
+                color: #000;
+                font-size: 12px;
+                text-align: left;
+                font-weight: 400;
+                letter-spacing: 0.015em;
+                border-bottom: none;
+
+                &:hover,
+                &.selected {
+                    border-bottom: none;
+                    color: #d81e05;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// nav expand button. separated from main scss for cleanliness.
+
+a.nav-expand {
+
+
+}
+
+// Nav close button (contained within inner div)
+
+nav#main-nav li a.nav-close {
+    position: absolute;
+    z-index: 1000;
+    display: block;
+    width: 32px;
+    height: auto;
+    top: 15px;
+    right: 30px;
+
+    &.selected { border-bottom: none; }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+
+    }
+}
+
+// product dropdown
+
+nav#main-nav li#product-nav {
+    padding: 0;
+    left: -1px;
+
+    li.help {
+        position: absolute;
+        bottom: 30px;
+        right: 40px;
+        max-width: 550px;
+        text-align: right;
+    }
+
+    // category nav image
+
+    a.category-nav-image {
+        display: block;
+        position: relative;
+        margin-bottom: 23px;
+
+        img.logo {
+            display: block;
+            margin: 0;
+        }
+    }
+
+
+    // all inner uls should be static, without margin or padding.
+
+    ul.nav {
+        display: block;
+        position: static;
+        background: none;
+        margin: 0;
+        padding: 30px 15px 0px 30px;
+        box-shadow: none;
+    }
+
+
+    // outer div styles established on line 17 (absolutely positioned, with a background)/
+    // inner div exists for hover styles.
+
+    div.inner {
+        > ul.categories > li {
+            -webkit-transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease;
+        }
+
+        // on hover, fade out all categories that are not being hovered over
+
+        &:hover > ul.categories > li:not(:hover) {
+            opacity: 0.3;
+        }
+    }
+
+
+    // nested list items (top level are product category)
+
+    li {
+        float: left;
+        max-width: 178px;
+        margin: 0 0 15px 0;
+        padding: 0;
+
+        // categories must clear
+
+        &:nth-of-type(7) {
+            clear: left;
+            margin-bottom: 40px;
+
+            a {
+                img.logo {
+                    display: none;
+                }
+            }
+        }
+
+        &:nth-of-type(4) {
+            padding-bottom: 50px;
+        }
+
+        a {
+            padding: 0 10px 0px 20px;
+        }
+
+        h3 {
+            margin: 5px 0 0 0;
+
+            a {
+                font-weight: bold;
+                font-size: 12px;
+            }
+        }
+
+        // any nested list item should not be floated (these are sub-categories and groups)
+
+        li {
+            float: none;
+            margin-bottom: 0;
+            padding-bottom:0;
+
+            &:nth-of-type(4) {
+                padding-bottom: 0px;
+            }
+
+            &:nth-of-type(7) {
+                margin-bottom: 0px;
+            }
+
+            a {
+                padding: 5px 10px 0px 10px;
+            }
+        }
+    }
+
+
+    // product sub-categories
+
+    ul.sub-categories {
+        padding: 10px 20px;
+
+        li {
+            a {
+                padding: 5px;
+                box-sizing: border-box;
+                border-left: 3px solid transparent;
+            }
+
+            // on hover show groups, only affect anchors that is a direct descendant
+
+            &:hover {
+
+                > a {
+                    font-weight: 600;
+                    background: #d1d3d4;
+                    border-left: 3px solid #a93439;
+                }
+            }
+        }
+    }
+
+}

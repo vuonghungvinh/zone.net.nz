@@ -1,0 +1,49 @@
+{% extends "common/base.html" %}
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'common/contact.css' %}" />
+
+{% block meta_description %}
+<meta name="description" content="{{ page.meta_description }}" />
+{% endblock meta_description %}
+
+{% endblock html_head %}
+
+
+{% block title %}
+{{ page.name }}
+{% endblock title%}
+
+
+{% block breadcrumbs %}
+<h4>{{ page.name }}</h4>
+{% endblock breadcrumbs %}
+
+
+{% block share %}
+{% endblock share %}
+
+
+{% block page %}
+
+<article class="contact">
+<div class="twocol">
+<h1>{{ page.name }}</h1>
+	<div class="wysiwyg">
+	{{ page.body|safe }}
+	</div>
+</div>
+</article>
+
+<div class="right-col">
+	<h2 class="form">Contact Form</h2>
+	<script type="text/javascript" defer src="//www.123contactform.com/embed/2270414.js" data-role="form"></script>
+	{% comment %}
+	{% for image in page.basic_images.all %}
+		<img src="{{MEDIA_URL}}{{image.image}}" class="img-responsive">
+	{% endfor %}
+	{% endcomment %}
+</div>
+
+{% endblock page %}

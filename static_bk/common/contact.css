@@ -1,0 +1,39 @@
+section#content {
+	width: 90.3%;
+}
+
+.contact {
+	float: left;
+	width: 50%;
+}
+
+.right-col {
+    float: right;
+    width: 50%;
+    padding-top: 70px;
+}
+
+.img-responsive {
+	display: block;
+	max-width: 100%;
+	margin-bottom: 5px;
+}
+
+.right-col h2.form {
+	padding-left: 15px;
+}
+
+
+@media only screen and (max-width: 480px) {
+	.contact {
+	    float: none;
+	    width: auto;
+	}
+
+	.right-col {
+		float: none;
+	    width: auto;
+	    margin-left: -15px;
+		padding-top: 10px;
+	} 
+}

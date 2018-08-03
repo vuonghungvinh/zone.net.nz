@@ -1,0 +1,13 @@
+
+
+<form method="post" action="">
+{% csrf_token %}
+<ul>
+    <li class="project-case-study">
+        <span class="extension">{{ entry.file_extension }}</span>
+        <span class="project-case-study-submit">
+            <input type="submit" name="download-selected" value="Full Project Case Study" />
+        </span>
+    </li>
+</ul>
+</form>

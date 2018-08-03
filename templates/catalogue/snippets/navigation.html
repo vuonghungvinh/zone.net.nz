@@ -1,0 +1,99 @@
+<ul>
+{% if category %}
+<li><a href="{% url 'catalogue-category-detail' slug=category.slug pk=category.pk %}">Overview</a></li>
+{% endif %}
+<!-- hard code zolatone -->
+{% if category.id == 5 %}
+    <li><a href="/catalogue/product/flex-roll/22/">Flex</a></li>
+    <li><a href="/catalogue/product/counterpointe/23/">Counterpointe</a></li>
+    <li><a href="/catalogue/product/lluminations/26/">Lluminations</a></li>
+    <li><a href="/catalogue/product/metals/27/">Metals</a></li>
+    <li><a href="/catalogue/product/polomyx/28/">Polomyx</a></li>
+    <li><a href="/catalogue/product/polomyx-airless/29/">Polomyx Airless</a></li>
+{% endif %}
+<!-- hard code firezone -->
+{% if category.id == 7 %}
+    <li><a href="/catalogue/product/FireZone-92-Clear-Intumescent-Coating-for-Timber/21/">FireZone 92</a></li>
+    <li><a href="/catalogue/product/firezone-52-white-fire-resistant-coating/245/">FireZone 52</a></li>
+{% endif %}
+<!-- hard code phoenix -->
+{% if category.id == 6 %}
+        <li><a href="/catalogue/product/phoenix-370-60/500/">Phoenix 370-60</a></li>
+    <li><a href="/catalogue/product/phoenix-370-90/562/">Phoenix 370-90</a></li>
+    <li><a href="/catalogue/product/phoenix-370-120/17/">Phoenix 370-120</a></li>
+    <li><a href="/catalogue/product/phoenix-170-120/18/">Phoenix 170-120</a></li>           
+{% endif %}
+<!-- hard code isolatek -->
+{% if category.id == 10 %}
+    <li><a href="/catalogue/product/isolatek-type-300/530/">Isolatek Type 300</a></li>
+    <li><a href="/catalogue/product/isolatek-qwik-set/532/">Isolatek Qwik Set</a></li>
+    <li><a href="/catalogue/product/isolatek-type-300-es/531/">Isolatek Type 300 ES</a></li>
+{% endif %}
+<!-- hard code balco -->
+{% if category.id == 4 %}
+    <li><a href="https://www.balcousa.com/product-category/expansion-joint-covers/architectural-systems/" target="_blank">Balco USA Website</a></li>
+{% endif %}
+<!-- hard code united enertech -->
+{% if category.id == 11 %}
+    <li><a href="https://unitedenertech.com/" target="_blank">United Enertech USA Website</a></li>
+{% endif %}
+
+{% if category.id == 4 %}
+{% comment %}
+<li><a href="{% url 'product-selector' slug=category.slug pk=category.pk %}">Product Selector</a></li>
+{% endcomment %}
+{% endif %}
+{% for c in sub_categories %}
+    <!-- hard code prevent zolatone products -->
+    {% if category.id != 5 or c.pk != 17 %}
+    <!-- hard code prevent firezone systems -->
+    {% if category.id != 7 or c.pk != 15 %}
+    <!-- hard code prevent phoenix products -->
+    {% if category.id != 6 or c.pk != 16 %}
+    <!-- hard code prevent isolatek products -->
+    {% if category.id != 10 or c.pk != 41 %}
+    {% if category.id == 11 and c.pk != 43 or category.id != 11 %}
+        <li>
+        <a {% if sub_category.pk == c.pk %} class="selected dropdown-heading"{% endif %} href="{% url 'catalogue-sub-category-detail' category.slug c.slug c.pk %}">{{ c.name }}</a>
+        {% if sub_category.pk == c.pk %}
+            <ul>
+            {% for g in groups %}
+                <li>
+                <a {% if g.id == group.id %}class="selected"{% endif %} href="{% url 'catalogue-group' category.slug c.slug c.pk g.slug %}#{{ g.pk }}">{{ g.name }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        </li>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    {% endif %}
+{% endfor %}
+
+
+{% if category.colour_ranges.count %}
+    <li><a href="{% url 'catalogue-category-colours' category.slug category.pk %}">Color Options</a></li>
+{% endif %}
+
+<!-- <li><a href="{% url 'projects_by_product_category' selected %}">Project Gallery</a></li> -->
+{% if category %}
+{% if category.id != 10 and category.id != 11 %}
+<li><a href="{% url 'projects_by_product_category' category.slug %}">Project Gallery</a></li>
+{% endif %}
+{% endif %}
+</ul>
+
+{% comment %}
+{% if case_studies %}
+    <h3><a href="{% url 'project_category_entries' category.slug category.pk %}">Project Gallery</a></h3>
+    <ul>
+    {% for c in case_studies %}
+        <li>
+        <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endcomment %}

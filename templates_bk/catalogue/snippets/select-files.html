@@ -1,0 +1,23 @@
+
+
+<form method="post" action="">
+
+<ul>
+{% for file in files %}
+    <li>
+    <span class="extension">{{ file.extension }}</span>
+    <span class="filename"><a href="{{ file.file.url }}">{{ file.name }}</a></span>
+    <span class="selector">
+    <input type="checkbox" name="download-files" value="{{ file.pk }}" id="file-{{ file.pk }}" />
+    <label for="file-{{ file.pk }}"></label>
+    </span>
+    </li>
+{% empty %}
+    <p><em>No Files</em></p>
+{% endfor %}
+    <li>
+        <button type="submit" name="download-selected"><i class="flaticon-angle-arrow-down"></i>Download selected</button>
+    {% csrf_token %}
+    </form>
+    </li>
+</ul>

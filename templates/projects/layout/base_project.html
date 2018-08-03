@@ -1,0 +1,18 @@
+{% extends "common/base.html" %}
+{% load blog_tags %}
+
+
+{% block title %}Project Gallery{% endblock title %}
+
+
+{% block breadcrumbs %}
+<h4><a href="{% url 'project_index' %}">project gallery</a> / <span>{{ entry.title }}</span></h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+
+<h3><!-- Project Gallery --></h3>
+
+
+{% endblock sub-navigation %}

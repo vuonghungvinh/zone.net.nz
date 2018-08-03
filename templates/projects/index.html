@@ -1,0 +1,37 @@
+{% extends "projects/layout/base.html" %}
+{% load blog_tags %}
+
+
+{% block page %}
+
+<article>
+
+<h1>Project Gallery</h1>
+
+
+
+<form>
+	<div class="styled-selector flaticon-angle-arrow-down">
+		<select onChange="window.location.href=this.value" class="project-filter">
+		<option {% if not selected %}selected="selected"{% endif %} disabled value="{% url 'project_index' %}" style='display:none;'>Filter by Product</option>
+		<option value="{% url 'project_index' %}">View all Projects</option>
+		{% for category in categories %}
+		    <option value="{% url 'projects_by_product_category' product_category_slug=category.slug %}" {% if category.slug == selected %}selected="selected"{% endif %}>{{ category.name }}</option>
+		{% endfor %}
+		</select>
+	</div>
+</form>
+
+
+<ul class="object-list clearfix project-filtered">
+{% for project in projects %}
+    <li>{% blog_entry_summary project %}</li>
+{% empty %}
+    <li><em>No projects.</em></li>
+{% endfor %}
+</ul>
+
+</article>
+
+
+{% endblock page %}

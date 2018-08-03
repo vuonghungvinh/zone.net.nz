@@ -1,0 +1,155 @@
+{% extends "common/base.html" %}
+{% load blog_tags %}
+{% load catalogue_tags %}
+{% load animal3_thumbnail %}
+
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static 'common/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'carousel/carousel.css' %}" />
+<script type="text/javascript" src="{% static 'carousel/carousel.js' %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{% static 'cycle/cycle.css' %}" />
+<script type="text/javascript" src="{% static 'cycle/cycle.min.js' %}"></script>
+
+{% block meta_description %}
+<meta name="description" content="{{ page.meta_description }}" />
+{% endblock meta_description %}
+
+{% endblock html_head %}
+
+{% block title %}
+{{ page.name }}
+{% endblock title%}
+
+{% block breadcrumbs %}
+
+<div id="carousel" style="overflow: hidden;">
+
+{% for image in images %}
+    {% if image.url %}
+        <a href="{{ image.url }}">{% thumbnail image.image 'cms_homepage' %}
+        {% if image.caption %}<p>{{ image.caption }}</p>{% endif %}
+        </a>
+    {% else %}
+        <a href="/">{% thumbnail image.image 'cms_homepage' %}
+        {% if image.caption %}<p>{{ image.caption }}</p>{% endif %}
+        </a>
+    {% endif %}
+{% endfor %}
+<!-- <div class="carousel-navigation"></div> -->
+</div>
+
+<script type="text/javascript">
+
+(function () {
+
+    function init() {
+        $('#carousel').cycle({
+        	    fx: 'fade',
+            speed: 1000,
+            timeout: 4000,
+            pauseOnHover: true,
+            random: false,
+            pager: '.carousel-navigation',
+            pagerActiveClass: 'selected',
+            pagerTemplate: '<a href="#"></a>',
+            next: '.carousel-next',
+            prev: '.carousel-prev',
+            slides: 'a'
+        });
+    }
+
+    jQuery(init);
+
+}());
+
+</script>
+
+
+{% endblock breadcrumbs %}
+
+
+{% block share %}
+{% endblock share %}
+
+
+{% block page %}
+
+<article class="home">
+
+
+
+<div class="twocol">
+    <div class="wysiwyg">
+    {{ page.body|safe }}
+    </div>
+</div>
+
+
+{% comment %}
+<div class="twocol home-featured">
+
+<h2>Featured Products</h2>
+
+<div class="carousel">
+<div class="carousel-sliders">
+<a href="#" class="controls left" data-action="slide-left"><i class="flaticon-arrows-1"></i></a>
+<a href="#" class="controls right" data-action="slide-right"><i class="flaticon-arrows-2"></i></a>
+</div>
+
+<div class="carousel-stage" data-autoplay="false" data-time="3000">
+<ol>
+{% catalogue_featured_products %}
+</ol>
+</div>
+
+</div>
+
+</div>
+{% endcomment %}
+
+
+<div class="twocol">
+
+<article class="featured">
+    <h3>Featured<br /> Products</h3>
+    <div class="carousel">
+    <div class="carousel-sliders">
+    <a href="#" class="controls left" data-action="slide-left"><i class="flaticon-arrows-1"></i></a>
+    <a href="#" class="controls right" data-action="slide-right"><i class="flaticon-arrows-2"></i></a>
+    </div>
+
+    <div class="carousel-stage" data-autoplay="false" data-time="3000">
+    <ol>
+    {% catalogue_featured_products %}
+    </ol>
+    </div><!-- /carousel-stage -->
+
+    </div><!-- /carousel -->
+</article>
+
+<article class="featured">
+    <h3>Featured<br /> Projects</h3>
+
+    <div class="carousel">
+    <div class="carousel-sliders">
+    <a href="#" class="controls left" data-action="slide-left"><i class="flaticon-arrows-1"></i></a>
+    <a href="#" class="controls right" data-action="slide-right"><i class="flaticon-arrows-2"></i></a>
+    </div>
+
+    <div class="carousel-stage" data-autoplay="false" data-time="3000">
+    <ol>
+    {% blog_featured_entries %}
+    </ol>
+    </div><!-- /carousel-stage -->
+
+    </div><!-- /carousel -->
+</article>
+
+</div>
+
+</article>
+
+{% endblock page %}

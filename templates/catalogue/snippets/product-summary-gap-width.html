@@ -1,0 +1,29 @@
+{% load animal3_thumbnail %}
+{% load catalogue_tags %}
+
+<div class="gap-holder">
+{% if product.cover_image %}
+    {% thumbnail product.cover_image 'product-thumbnail' alt=product.name %}
+{% endif %}
+<h4>{{ product.name }}</h4>
+
+<div class="excerpt">
+{% firstof product.excerpt|safe product.description|striptags %}
+</div>
+
+<form>
+
+<div class="styled-selector flaticon-angle-arrow-down">
+	<select onChange="window.location.href=this.value" class="project-filter">
+	<option value="#">Select Gap Width</option>
+	{% for gap in product.gapwidth.all %}
+		{% if forloop.counter < 16 %}
+	    <option value="{% url 'catalogue-product-gap-detail' slug=gap.slug pk=gap.pk %}">{{gap.gap_width}}mm gap, {{gap.movement}}% movement</option>
+	    {% endif %}
+	{% endfor %}
+	</select>
+</div>
+
+</form>
+
+</div>

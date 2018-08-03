@@ -1,0 +1,94 @@
+{% extends "catalogue/layout/base.html" %}
+{% load animal3_thumbnail %}
+
+{% block title %}
+    {% if sub_category.page_name %}
+        {{ sub_category.page_name }}
+    {% else %}
+        {{ sub_category.name }}
+    {% endif %}
+{% endblock title %}
+{% block meta_description %}
+<meta name="description" content="{{ sub_category.meta_description }}" />
+{% endblock meta_description %}
+
+{% block breadcrumbs %}
+<h4>
+<a href="{% url 'catalogue-index' %}">Products</a> /
+<a href="{% url 'catalogue-category-detail' category.slug category.pk %}">{{ category.name }}</a> /
+{{ sub_category.name }}
+</h4>
+{% endblock breadcrumbs %}
+
+
+{% block sub-navigation %}
+<h3>{{ category.name }}</h3>
+{% include 'catalogue/snippets/navigation.html' %}
+{% endblock sub-navigation %}
+
+
+{% block page %}
+
+
+<article>
+
+{# Print logo without resizing #}
+{% if sub_category.logo %}
+{% with logo=sub_category.logo %}
+    <img class="sub-cat-logo" src="{{ MEDIA_URL }}{{ logo }}" width="{{ logo.width }}" height="{{ logo.height }}" />
+{% endwith %}
+{% endif %}
+
+<div class="main-logo">
+    <div>
+        <h1>{{ sub_category.name }}</h1>
+    </div>
+    {% if category.main_logo %}
+    <img src="{{MEDIA_URL}}{{category.main_logo}}">
+    {% endif %}
+</div>
+
+<div class="wysiwyg">
+    {{ sub_category.description|safe }}
+</div>
+
+{% for objects in sorted_data %}
+    {% for product in objects %}
+        {% if forloop.counter0 == 0 %}
+            <a id="{{ product.pk }}"></a>
+            <h2>{{ product.name }}</h2>
+            <div class="object-list clearfix">
+        {% else %}
+            {% if product.gapwidth.all %}
+                <div>
+                {% include 'catalogue/snippets/product-summary-gap-width.html' %}
+                </div>
+            {% else %}
+                <div>
+                {% include 'catalogue/snippets/product-summary.html' %}
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+{% empty %}
+    {# If no groups just print product summaries #}
+    <div class="object-list clearfix">
+    {% for product in products %}
+        {% if product.gapwidth.all %}
+            <div>
+            {% include 'catalogue/snippets/product-summary-gap-width.html' %}
+            </div>
+        {% else %}
+            <div>
+            {% include 'catalogue/snippets/product-summary.html' %}
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endfor %}
+
+</article>
+
+
+{% endblock page %}

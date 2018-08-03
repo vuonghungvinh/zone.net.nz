@@ -1,0 +1,111 @@
+{% extends "projects/layout/base_project.html" %}
+{% load animal3_thumbnail %}
+{% load blog_tags %}
+
+
+{% block html_head %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'gallery/gallery.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'projects/projects.css' %}" type="text/css" />
+<link rel="stylesheet" href="{% static 'slide-viewer/slide-viewer.css' %}" type="text/css" />
+<script type="text/javascript" src="{% static 'gallery/gallery.js' %}"></script>
+<script type="text/javascript" src="{% static 'slide-viewer/slide-viewer.js' %}"></script>
+{% endblock html_head %}
+
+{% block title %}
+    {% if entry.page_name %}
+        {{ entry.page_name }}
+    {% else %}
+        {{ entry.title }} | Zone Architectural Products
+    {% endif %}
+{% endblock title %}
+{% block meta_description %}
+<meta name="description" content="{% if entry.meta_description %}{{ entry.meta_description }}{% else %}{{ entry.body|striptags }}{% endif %}" />
+{% endblock meta_description %}
+
+
+{% block page %}
+
+<article class="project-detail">
+
+<h1>{{ entry.title }}</h1>
+
+{% if images or entry.cover_image %}
+    <div class="gallery">
+
+    <!-- Main Gallery Image Stage -->
+    <div class="gallery-stage">
+    <a class="gallery-caption-toggle" data-alt-text="caption +" href="#">caption - </a>
+    </div>
+
+    <!-- Gallery Data -->
+    <ul class="gallery-data" data-page-limit="5" data-caption-state="closed">
+    {% if entry.cover_image %}
+        <li>
+        {% thumbnail_alt entry.cover_image 'project-gallery-thumbnail' entry.title None class="gallery-thumbnail" %}
+        <div class="gallery-slide">
+        {% thumbnail_alt entry.cover_image 'project-gallery' entry.title None %}
+        {% if entry.image_caption %}
+            <div class="gallery-caption">
+                {{ entry.image_caption|safe }}
+            </div>
+        {% endif %}
+        </div>
+        </li>
+    {% endif %}
+
+    {% for image in images %}
+        <li>
+        {% thumbnail_alt image.image 'project-gallery-thumbnail' entry.title None class="gallery-thumbnail" %}
+        <div class="gallery-slide">
+        {% thumbnail_alt image.image 'project-gallery' entry.title None %}
+        {% if image.caption %}
+            <div class="gallery-caption">
+                {{ image.caption|safe }}
+            </div>
+        {% endif %}
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <!-- Gallery Page Navigation -->
+    <div class="gallery-pages"></div>
+
+    </div> <!-- /gallery -->
+{% endif %}
+
+<br style="clear:both;" />
+
+<div class="wysiwyg">
+    {{ entry.body|safe }}
+</div>
+
+{% if entry.file != '0' and entry.file %}
+<div class="downloads no-print">
+{% include 'projects/snippets/download-case-study.html' %}
+</div>
+{% endif %}
+
+</article>
+
+<aside id="related">
+<h3>Related Projects</h3>
+<div class="slide-viewer">
+
+<div class="slide-viewer-controls">
+<a class="up" data-action="slide-up" href="#"><i class="flaticon-arrows"></i></a>
+<a class="down" data-action="slide-down" href="#"><i class="flaticon-angle-arrow-down"></i></a>
+</div>
+
+<div class="slide-viewer-stage">
+{% related_entries entry %}
+</div>
+
+</div>
+</aside>
+
+{% endblock page %}
+
+{% block aside %}
+{% endblock aside %}

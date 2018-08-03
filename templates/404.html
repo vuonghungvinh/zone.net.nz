@@ -1,0 +1,14 @@
+{% extends "common/base.html" %}
+
+
+{% block page %}
+
+<h1>{% block title %}The requested page was not found{% endblock %}</h1>
+
+<p class="f-700">
+Please try re-navigating using above menu or "Search Products" box.
+</p>
+
+<p>If the problem persists or you can’t find what you are looking for, please call 0800 508 500 or email {{ 'info@zone.net.nz'|email }} for assistance.</p>
+
+{% endblock page %}
